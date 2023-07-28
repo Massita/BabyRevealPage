@@ -1,110 +1,173 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>What is the baby name?</title>
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/theme/css/style.css">
-        <style>
-            .adjustable-div {
-              width: 100%; /* Adjust as needed */
-              height: auto; /* Adjust as needed */
-              padding: 10px; /* Space inside the div */
-              box-sizing: border-box; /* Includes padding and border in element's total width and height */
-              overflow: clip; /* Add a scrollbar if necessary */
-              white-space: pre-wrap;
+
+<head>
+    <title>What is the baby name?</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/theme/css/style.css">
+    <style>
+        .chat {
+            width: 90%;
+            height: auto;
+            background-color: #fff;
+            border: 1px solid #e5e5ea;
+            border-radius: 0.25rem;
+            display: flex;
+            flex-direction: column;
+            font-family: "SanFrancisco";
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
+            max-width: 600px;
+            padding: 0.5rem 1.5rem;
+        }
+
+        .chat p {
+            border-radius: 1.15rem;
+            line-height: 1.25;
+            max-width: 75%;
+            padding: 0.5rem .875rem;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .chat p::before,
+        .chat p::after {
+            bottom: -0.1rem;
+            content: "";
+            height: 1rem;
+            position: absolute;
+        }
+
+        p.from-me {
+            align-self: flex-end;
+            background-color: #248bf5;
+            color: #fff;
+        }
+
+        p.from-me::before {
+            border-bottom-left-radius: 0.8rem 0.7rem;
+            border-right: 1rem solid #248bf5;
+            right: -0.35rem;
+            transform: translate(0, -0.1rem);
+        }
+
+        p.from-me::after {
+            background-color: #fff;
+            border-bottom-left-radius: 0.5rem;
+            right: -40px;
+            transform: translate(-30px, -2px);
+            width: 10px;
+        }
+
+        p[class^="from-"] {
+            margin: 0.5rem 0;
+            width: fit-content;
+        }
+
+        p.from-me~p.from-me {
+            margin: 0.25rem 0 0;
+        }
+
+        p.from-me~p.from-me:not(:last-child) {
+            margin: 0.25rem 0 0;
+        }
+
+        p.from-me~p.from-me:last-child {
+            margin-bottom: 0.5rem;
+        }
+
+        p.from-them {
+            align-items: flex-start;
+            background-color: #e5e5ea;
+            color: #000;
+        }
+
+        p.from-them:before {
+            border-bottom-right-radius: 0.8rem 0.7rem;
+            border-left: 1rem solid #e5e5ea;
+            left: -0.35rem;
+            transform: translate(0, -0.1rem);
+        }
+
+        p.from-them::after {
+            background-color: #fff;
+            border-bottom-right-radius: 0.5rem;
+            left: 20px;
+            transform: translate(-30px, -2px);
+            width: 10px;
+        }
+
+        p[class^="from-"].emoji {
+            background: none;
+            font-size: 2.5rem;
+        }
+
+        p[class^="from-"].emoji::before {
+            content: none;
+        }
+
+        .no-tail::before {
+            display: none;
+        }
+
+        .margin-b_none {
+            margin-bottom: 0 !important;
+        }
+
+        .margin-b_one {
+            margin-bottom: 1rem !important;
+        }
+
+        .margin-t_one {
+            margin-top: 1rem !important;
+        }
+    </style>
+</head>
+
+<body>
+    <pre><div id="chat" class="chat"></div></pre>
+    <div id="input-area">
+        <input id="input" type="text" />
+        <button id="send">Send</button>
+    </div>
+
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var username = params.get("name");
+        var language = params.get("language")
+        var chatLogName = "chatLog" + username;
+
+        const chat = document.getElementById('chat');
+        const input = document.getElementById('input');
+        const sendButton = document.getElementById('send');
+        const chatLog = JSON.parse(localStorage.getItem(chatLogName)) || [];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            Setup();
+        }, false);
+
+        function Setup() {
+            if (chatLog.length == 0) {
+                const message = "My name is " + username + " I'll try to guess the baby's name in " + language;
+
+                sendMessage(message);
             }
-            body {
-                font-style: normal;
-                line-height: 1.5;
-                font-weight: 400;
-                color: #232323;
-                position: relative;
-            }
-            .assistant {
-                position: relative;
-                background: #00aabb;
-                border-radius: .4em;
-            }
+        }
 
-            .assistant:after {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 50%;
-                width: 0;
-                height: 0;
-                border: 38px solid transparent;
-                border-right-color: #00aabb;
-                border-left: 0;
-                margin-top: -38px;
-                margin-left: -38px;
-            }
+        function sendMessage(message) {
+            appendMessage(message, 'user', true);
 
-            .user {
-                position: relative;
-                background: #00aabb;
-                border-radius: .4em;
-            }
-
-            .user:after {
-                content: '';
-                position: absolute;
-                right: 0;
-                top: 50%;
-                width: 0;
-                height: 0;
-                border: 38px solid transparent;
-                border-left-color: #f1f658;
-                border-right: 0;
-                margin-top: -38px;
-                margin-right: -38px;
-            }
-        </style>
-    </head>
-    <body>
-        <pre><div id="chat" class="adjustable-div"></div></pre>
-        <div id="input-area">
-            <input id="input" type="text" />
-            <button id="send">Send</button>
-        </div>
-
-        <script>
-            var params = new URLSearchParams(window.location.search);
-            var username = params.get("name");
-            var language = params.get("language")
-            var chatLogName = "chatLog" + username;
-
-            const chat = document.getElementById('chat');
-            const input = document.getElementById('input');
-            const sendButton = document.getElementById('send');
-            const chatLog = JSON.parse(localStorage.getItem(chatLogName)) || [];
-
-            document.addEventListener('DOMContentLoaded', function() {
-                Setup();
-            }, false);
-
-            function Setup() {
-                if (chatLog.length == 0) {
-                    const message = "My name is " + username + " I'll try to guess the baby's name in " + language;
-
-                    sendMessage(message);
-                }
-            }
-
-            function sendMessage(message) {
-                appendMessage(message, 'user', true);
-
-                fetch('https://baby-name-reveal-e392f1eb024a.herokuapp.com/api/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        conversations: chatLog
-                    }),
-                })
+            fetch('https://baby-name-reveal-e392f1eb024a.herokuapp.com/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    conversations: chatLog
+                }),
+            })
                 .then((response) => response.json())
                 .then((data) => {
                     const aiMessage = data.choices[0].message.content;
@@ -113,40 +176,40 @@
                 .catch((error) => {
                     console.error('Error:', error);
                 });
-            }
+        }
 
-            function appendMessage(content, role, saveMessage) {
-                const messageElement = document.createElement('div');
-                messageElement.className = role;
-                messageElement.textContent = `${role === 'user' ? 'You' : 'AI'}: ${content}`;
-                chat.appendChild(messageElement);
-                chat.scrollTop = chat.scrollHeight;
+        function appendMessage(content, role, saveMessage) {
+            const messageElement = document.createElement('p');
+            messageElement.className = `${role === 'user' ? 'from-me' : 'from-them'}`;
+            messageElement.textContent = `${role === 'user' ? 'You' : 'AI'}: ${content}`;
+            chat.appendChild(messageElement);
+            chat.scrollTop = chat.scrollHeight;
 
-                if (saveMessage) {
-                    // Save the message in the chat log and update localStorage
-                    chatLog.push({ role, content });
+            if (saveMessage) {
+                // Save the message in the chat log and update localStorage
+                chatLog.push({ role, content });
 
-                    if (chatLog.length > 10) {
-                        chatLog.shift();
-                    }
-
-                    localStorage.setItem(chatLogName, JSON.stringify(chatLog));
+                if (chatLog.length > 10) {
+                    chatLog.shift();
                 }
+
+                localStorage.setItem(chatLogName, JSON.stringify(chatLog));
             }
+        }
 
-            // Load the previous chat log from localStorage
-            chatLog.forEach(({ content, role }) => {
-                appendMessage(content, role, false);
-            });
+        // Load the previous chat log from localStorage
+        chatLog.forEach(({ content, role }) => {
+            appendMessage(content, role, false);
+        });
 
-            sendButton.addEventListener('click', () => {
-                const message = input.value;
-                input.value = '';
+        sendButton.addEventListener('click', () => {
+            const message = input.value;
+            input.value = '';
 
-                sendMessage(message);
-            }
+            sendMessage(message);
+        }
         )
-        </script>
-    </body>
-</html>
+    </script>
+</body>
 
+</html>
