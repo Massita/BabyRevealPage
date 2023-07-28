@@ -1,87 +1,111 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Chat with OpenAI</title>
-        <style>
-            #chat {
-                height: 400px;
-                border: 1px solid black;
-                padding: 10px;
-                overflow: auto;
-            }
-            #input-area {
-                margin-top: 10px;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="chat"></div>
-        <div id="input-area">
-            <input id="input" type="text" />
-            <button id="send">Send</button>
-            <button id="clear">Clear Log</button>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.0, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  
+  
+  <title>Baby Massitinha</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Dela+Gothic+One:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dela+Gothic+One:400&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Golos+Text:400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Golos+Text:400,500,600,700,800,900&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="article05 cid-tIsj2q7oBw" id="article05-1">
+  
+
+  
+
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12">
+        <div class="card-wrapper">
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-5 image-wrapper">
+              <img class="w-100" src="assets/images/mbr-1.jpg" alt="Mobirise Website Builder">
+            </div>
+            <div class="col-12 col-lg col-md-12">
+              <div class="text-wrapper align-left">
+                <h1 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>Surprise!</strong></h1>
+                <p class="mbr-text mbr-fonts-style mb-4 display-7">The moment we’ve all been waiting for has finally arrived! Our little bundle of joy is about to enter our world, and we couldn’t be more thrilled. We’ve got a secret up our sleeves: the name of our baby!<br>
+<br>Let’s build up some anticipation—drumroll, please… <br>No, really, get those virtual drums rolling. Our baby’s name deserves nothing less than an extravagant introduction.<br>
+<br>Alright, enough teasing. Prepare yourselves, dear friends and family. It's time to unveil the name of our precious new baby!<br>
+                </p>
+                
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <script>
-            const chat = document.getElementById('chat');
-            const input = document.getElementById('input');
-            const sendButton = document.getElementById('send');
-            const clearButton = document.getElementById('clear');
-            const chatLog = JSON.parse(localStorage.getItem('chatLog')) || [];
+<section data-bs-version="5.1" class="form1 cid-tIsokmLLOC" id="form01-7">
+	
 
-            function appendMessage(content, role, saveMessage) {
-                const messageElement = document.createElement('p');
-                messageElement.textContent = `${role === 'user' ? 'You' : 'AI'}: ${content}`;
-                chat.appendChild(messageElement);
-                chat.scrollTop = chat.scrollHeight;
+	
 
-                if (saveMessage) {
-                    // Save the message in the chat log and update localStorage
-                    chatLog.push({ role, content });
+	<div class="container">
+		<div class="row content-wrapper justify-content-center">
+			<div class="col-lg-7 mbr-form">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h5 class="mbr-section-title mbr-fonts-style mb-5 display-2"><strong>Ready for the big moment?</strong><strong><br></strong></h5>
+				</div>
 
-                    if (chatLog.length > 10) {
-                        chatLog.shift();
-                    }
+        <div class="col-lg-12 col-md-12 col-sm-12">
+					<h5 class="mbr-section-title mbr-fonts-style mb-5 display-4">
+            Wait up! You'll have to play a game to discover it!
+            <br>
+            Yes, it's never that straightforward…
+            <br>
+            <br>
+            Intriguing, isn't it? 
+            <br><br>
+            The game revolves around engaging in a conversation with an AI that's in the know about the baby's name. Your mission is to coax this AI into revealing the name, or, use your detective skills to decipher it from the hints the AI will drop during the discussion. It's a fun and unique way to discover the baby's name!<br></h5>
+				</div>
 
-                    localStorage.setItem('chatLog', JSON.stringify(chatLog));
-                }
-            }
+        <br><br>
+				<div class="text-wrapper align-left" data-form-type="formoid">
+					<!--Formbuilder Form-->
+					<form action="./index2.html" method="GET" class="mbr-form form-with-styler" data-form-title="Form Name">
+						<div class="dragArea row">
+							<div data-for="name" class="col-lg-6 col-md-6 col-sm-12 form-group">
+                <input type="hidden" name="language" id="language" value="english">
+								<input type="text" name="name" placeholder="Your name" data-form-field="name" class="form-control display-7" value="" id="name-form01-7">
+							</div>
+							<div class="col-auto mbr-section-btn">
+								<button id="setName" type="submit" class="w-100 w-100 w-100 w-100 w-100 w-100 btn btn-secondary display-7">Let's play</button>
+							</div>
+						</div>
+					</form>
+					<!--Formbuilder Form-->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-            // Load the previous chat log from localStorage
-            chatLog.forEach(({ content, role }) => {
-                appendMessage(content, role, false);
-            });
 
-            sendButton.addEventListener('click', () => {
-                const message = input.value;
-                input.value = '';
-                appendMessage(message, 'user', true);
-
-                fetch('https://baby-name-reveal-e392f1eb024a.herokuapp.com/api/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        conversations: chatLog
-                    }),
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    const aiMessage = data.choices[0].message.content;
-                    appendMessage(aiMessage, 'assistant', true);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-            });
-
-            clearButton.addEventListener('click', () => {
-                // Clear the chat log in localStorage and the chat display
-                localStorage.removeItem('chatLog');
-                chat.innerHTML = '';
-            });
-        </script>
-    </body>
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
 </html>
-
