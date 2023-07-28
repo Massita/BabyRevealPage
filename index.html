@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenAI GPT-3 API Demo</title>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const prompt = document.getElementById('prompt').value;
+            const data = { prompt: prompt, max_tokens: 60 };
+
+            fetch('https://gentle-mountain-05948-8d6d3c7ba4e7.herokuapp.com/api/generate_text', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = data;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>OpenAI GPT-3 API Demo</h1>
+    <form onsubmit="submitForm(event)">
+        <label for="prompt">Prompt:</label><br>
+        <input type="text" id="prompt" name="prompt"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <h2>Result:</h2>
+    <p id="result"></p>
+</body>
+</html>
