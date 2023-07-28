@@ -15,6 +15,52 @@
               overflow: clip; /* Add a scrollbar if necessary */
               white-space: pre-wrap;
             }
+            body {
+                font-style: normal;
+                line-height: 1.5;
+                font-weight: 400;
+                color: #232323;
+                position: relative;
+            }
+            .assistant {
+                position: relative;
+                background: #00aabb;
+                border-radius: .4em;
+            }
+
+            .assistant:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 0;
+                height: 0;
+                border: 38px solid transparent;
+                border-right-color: #00aabb;
+                border-left: 0;
+                margin-top: -38px;
+                margin-left: -38px;
+            }
+
+            .user {
+                position: relative;
+                background: #00aabb;
+                border-radius: .4em;
+            }
+
+            .user:after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 0;
+                height: 0;
+                border: 38px solid transparent;
+                border-left-color: #f1f658;
+                border-right: 0;
+                margin-top: -38px;
+                margin-right: -38px;
+            }
         </style>
     </head>
     <body>
@@ -70,7 +116,8 @@
             }
 
             function appendMessage(content, role, saveMessage) {
-                const messageElement = document.createElement('p');
+                const messageElement = document.createElement('div');
+                messageElement.className = role;
                 messageElement.textContent = `${role === 'user' ? 'You' : 'AI'}: ${content}`;
                 chat.appendChild(messageElement);
                 chat.scrollTop = chat.scrollHeight;
