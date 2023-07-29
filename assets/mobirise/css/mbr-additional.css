@@ -53,7 +53,7 @@ body {
 }
 .display-7 {
   font-family: 'Golos Text', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 1.3;
 }
 .display-7 > .mbr-iconfont {
@@ -619,7 +619,7 @@ a:hover {
 }
 .form-control {
   font-family: 'Golos Text', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 1.3;
   font-weight: 400;
   border-radius: 100px !important;
@@ -838,4 +838,112 @@ a {
 .cid-tIsokmLLOC .mbr-section-title {
   text-align: center;
   color: #ffffff;
+}
+
+.cid-yellow {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #fffdd0;
+}
+.cid-yellow input {
+  padding: 1.2rem 1.5rem;
+  border: none !important;
+  height: 100%;
+}
+.cid-yellow input:hover {
+  border: none !important;
+}
+.cid-yellow .btn {
+  height: 100%;
+  margin: auto;
+}
+.cid-yellow .card-wrapper {
+  min-height: 200px;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin: 1.2rem;
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.07) 0px 1px 3px 0px, rgba(0, 0, 0, 0.03) 0px 0px 0px 1px;
+}
+@media (min-width: 992px) {
+  .cid-yellow .text-wrapper {
+    padding: 0 2rem;
+  }
+}
+.cid-yellow .row {
+  justify-content: center;
+}
+.cid-yellow .mbr-section-btn {
+  display: flex;
+  margin-bottom: 1.2rem;
+  width: fit-content;
+}
+.cid-yellow .mbr-section-btn .btn {
+  width: auto;
+}
+@media (max-width: 991px) {
+  .cid-yellow .image-wrapper {
+    margin-bottom: 2rem;
+  }
+  .cid-yellow .content-wrapper {
+    flex-direction: column-reverse;
+  }
+}
+.cid-yellow .justify-content-center {
+  align-items: center;
+}
+.cid-yellow H1 {
+  color: #89cff0;
+}
+.cid-yellow P {
+  color: #89cff0;
+  text-align: center;
+}
+.cid-yellow .mbr-section-title {
+  text-align: center;
+  color: #0c2c68;
+}
+
+.cid-yellow .chat {
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.cid-yellow .chat p.from-me {
+  text-align: end;
+  float: right;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  background-color: #0c2c68;
+  color: #fff;
+  white-space: pre-wrap;
+  flex-flow: row wrap;
+  word-wrap: break-word;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 5px 10px 5px 12px;
+  width: fit-content;
+  padding: 1rem;
+  box-shadow: rgb(0 0 0 / 25%) 0px 2px 5px 2px;
+}
+
+.cid-yellow .chat p.from-them {
+  text-align: start;
+  float: left;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  background-color: #89cff0;
+  white-space: pre-wrap;
+  color: #000;
+  flex-flow: row wrap;
+  word-wrap: break-word;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  padding: 5px 10px 5px 12px;
+  width: fit-content;
+  padding: 1rem;
+  box-shadow: rgb(0 0 0 / 25%) 0px 2px 5px 2px;
 }
