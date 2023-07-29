@@ -859,10 +859,9 @@ a {
 }
 .cid-yellow .card-wrapper {
   min-height: 200px;
+  max-width: 800px;
   overflow: hidden;
   background: #ffffff;
-  display: flex;
-  flex-direction: column;
   margin: 1.2rem;
   padding: 2rem;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.07) 0px 1px 3px 0px, rgba(0, 0, 0, 0.03) 0px 0px 0px 1px;
@@ -913,18 +912,16 @@ a {
 
 .cid-yellow .chat p.from-me {
   text-align: end;
-  float: right;
+  float: inline-end;
   overflow: hidden;
   transition: height 0.3s ease-in-out;
   background-color: #0c2c68;
   color: #fff;
   white-space: pre-wrap;
-  flex-flow: row wrap;
   word-wrap: break-word;
   border-radius: 10px;
   color: #fff;
   font-size: 1.2rem;
-  padding: 5px 10px 5px 12px;
   width: fit-content;
   padding: 1rem;
   box-shadow: rgb(0 0 0 / 25%) 0px 2px 5px 2px;
@@ -932,17 +929,15 @@ a {
 
 .cid-yellow .chat p.from-them {
   text-align: start;
-  float: left;
+  float: inline-start;
   overflow: hidden;
   transition: height 0.3s ease-in-out;
   background-color: #89cff0;
   white-space: pre-wrap;
   color: #000;
-  flex-flow: row wrap;
   word-wrap: break-word;
   border-radius: 10px;
   font-size: 1.2rem;
-  padding: 5px 10px 5px 12px;
   width: fit-content;
   padding: 1rem;
   box-shadow: rgb(0 0 0 / 25%) 0px 2px 5px 2px;
